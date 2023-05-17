@@ -29,12 +29,11 @@ const Gameboard = () => {
         if (valid) {
             for (let i = 0; i < ship.length; i++) {
                 const [y, x] = adjustCoords(y0, x0, i, direction);
-                //places ship w/index
-                board[y][x] = {ship, index: i};
+                //fills null board cells with ships with index
+                board[y][x] = {ship, index: i}; 
             };
             //adds it to placedShips array
             placedShips.push(ship);
-            console.log("placeShip results: ", placedShips);
             return valid;
         } else {
             return valid;
@@ -45,14 +44,13 @@ const Gameboard = () => {
         const cells = [];
         for (let i = 0; i < length; i++) {
             const [y, x] = adjustCoords(y0, x0, i, direction);
-            //checks that y/x are in-bounds
+            //checks that y/x are in-bounds and assigns their cells on the grid
             if (y < 10 && x < 10) {
                 cells.push(board[y][x]);
             } else {
                 return false;
             }
         }
-        console.log("check valid results: ", cells);
         return cells.every((cell) => cell === null);
     };
 
