@@ -54,6 +54,20 @@ const Gameboard = () => {
         return cells.every((cell) => cell === null);
     };
 
+    const autoPlace = (ship) => {
+        const [x, y] = randCoords();
+        const changeOrient = Math.random() > 0.5;
+        if (changeOrient) ship.changeDirection();
+        const placed = placeShip(ship, y, x);
+        if(!placed) autoPlace(ship);
+    }
+
+    const autoPlaceFleet = (fleet) => {
+        for (const ship in fleet) {
+            autoPlace(fleet[ship]);
+        }
+    }
+
 
     return {
         getBoard,
