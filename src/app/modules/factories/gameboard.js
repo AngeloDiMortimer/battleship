@@ -60,19 +60,44 @@ const Gameboard = () => {
         if (changeOrient) ship.changeDirection();
         const placed = placeShip(ship, y, x);
         if(!placed) autoPlace(ship);
-    }
+    };
 
     const autoPlaceFleet = (fleet) => {
         for (const ship in fleet) {
             autoPlace(fleet[ship]);
         }
-    }
+    };
+
+    const receiveAttack = (y, x) => {
+        // determines whether or not the attack will hit a ship
+        if (board[y][x] === null) {
+            // records missed shot
+            board[y][x] = 'miss';
+        } else if (board[y][x].ship) {
+            //calls 'hit' function of the correct ship
+            board[y][x].ship.hit(board[y][x].index);
+            // Records attacked cell with 'hit' (prevents future .ship.hit())
+            board[y][x] = 'hit';
+        }
+        return board[y][x];
+    };
+
+    const areAllShipsSunk = () => placedShips.every((ship) => ship.isSunk());
+
+    const reset = () => {
+        board = Array(10).fill(null).map(() => Array(10).fill(null));
+        placedShips = [];
+    };
 
 
     return {
         getBoard,
         placeShip,
-        areAllShipsPlaced
+        areAllShipsPlaced,
+        receiveAttack,
+        areAllShipsSunk,
+        autoPlaceFleet,
+        reset
     };
 };
 

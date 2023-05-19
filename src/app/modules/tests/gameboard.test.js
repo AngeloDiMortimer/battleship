@@ -1,6 +1,7 @@
 //test for gameboard factory
 
 import Gameboard from '../factories/gameboard';
+import Player from '../factories/player';
 import Ship from '../factories/ship';
 
 describe('Gameboard', () => {
@@ -136,5 +137,103 @@ describe('Gameboard', () => {
             expect(actual).toBe(true);
         });
     });
+
+    describe('Auto place fleet', () => {
+        const gameboard = Gameboard();
+        const player = Player();
+        const fleet = player.getFleet();
+        gameboard.autoPlaceFleet(fleet);
+
+        test('all ships placed', () => {
+            const actual = gameboard.areAllShipsPlaced();
+            expect(actual).toBe(true);
+        });
+        test('number of cells matches all ships placed', () => {
+            const actual = gameboard.getBoard().flat().filter((cell) => cell !== null).length;
+            expect(actual).toBe(17);
+
+        });
+    });
+
+    describe('receive attack', () => {
+        const gameboard = Gameboard();
+        const carrier = Ship('carrier');
+        const battleship = Ship('battleship');
+        gameboard.placeShip(carrier, 2, 0); // [2,0],[2,1],[2,2],[2,3],[2,4]
+        battleship.changeDirection();
+        gameboard.placeShip(battleship, 3, 2); // [3,2],[4,2],[5,2],[6,2]
+        gameboard.receiveAttack(0, 0);
+    
+        test('attack a carrier at index 0', () => {
+          gameboard.receiveAttack(2, 0);
+          const actual = carrier.getHits();
+          expect(actual).toEqual(['hit', null, null, null, null]);
+        });
+
+        test('attack a carrier at index 3', () => {
+          gameboard.receiveAttack(2, 3);
+          const actual = carrier.getHits();
+          expect(actual).toEqual(['hit', null, null, 'hit', null]);
+        });
+
+        test('miss', () => {
+          const actual = gameboard.getBoard()[0][0];
+          expect(actual).toEqual('miss');
+        });
+
+        test('hit at cell (2,0)', () => {
+          const actual = gameboard.getBoard()[2][0];
+          expect(actual).toEqual('hit');
+        });
+
+        test('hit at cell (2,3)', () => {
+          const actual = gameboard.getBoard()[2][3];
+          expect(actual).toEqual('hit');
+        });
+
+      });
+
+      describe('are all ships sunk', () => {
+        const gameboard = Gameboard();
+        const submarine = Ship('submarine');
+        const destroyer = Ship('destroyer');
+        gameboard.placeShip(submarine, 2, 0); // [2,0],[2,1],[2,2]
+        destroyer.changeDirection();
+        gameboard.placeShip(destroyer, 3, 2); // [3,2],[4,2]
+    
+        test('NO ship is sunk', () => {
+          const actual = gameboard.areAllShipsSunk();
+          expect(actual).toEqual(false);
+        });
+
+        test('1 ship has sunk', () => {
+          gameboard.receiveAttack(2, 0);
+          gameboard.receiveAttack(2, 1);
+          gameboard.receiveAttack(2, 2);
+          const actual = gameboard.areAllShipsSunk();
+          expect(actual).toEqual(false);
+        });
+
+        test('all ships have sunk', () => {
+          gameboard.receiveAttack(3, 2);
+          gameboard.receiveAttack(4, 2);
+          const actual = gameboard.areAllShipsSunk();
+          expect(actual).toEqual(true);
+        });
+
+      });
+    
+      describe('reset board', () => {
+        const gameboard = Gameboard();
+        const player = Player();
+        const fleet = player.getFleet();
+        gameboard.autoPlaceFleet(fleet);
+        gameboard.reset();
+        
+        test('empties board', () => {
+          const actual = gameboard.getBoard().flat().every((cell) => cell === null);
+          expect(actual).toEqual(true);
+        });
+      });
 
 });
