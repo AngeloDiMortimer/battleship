@@ -4,10 +4,53 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="bundle.js" defer></script>
     <title>Webpack App</title>
   </head>
   <body>
-    <h1 class="text-2xl text-blue-700">My Webpack + Tailwind App</h1>
-    <script src="bundle.js"></script>
+    <header>
+      <h1 class="title">
+        Battleship
+      </h1>
+    </header>
+    <main>
+      <div class="game-container">
+        
+        <div class="gameboards-container">
+          <div class="p1-gameboard">
+            <h1 class="grid-title">My Fleet</h1>
+            <div class="grid p1-grid"></div>
+          </div>
+          
+          <div class="p2-gameboard">
+            <h1 class="grid-title">Enemy Fleet</h1>
+            <div class="grid p2-grid"></div>
+          </div>
+
+        </div>
+
+        <div class="fleet-container">
+          <h1>Place Fleet</h1>
+          <button class="fleet-autoplace">Auto-Place</button>
+          <span class="fleet-info">Drag n' Drop (Double click to 
+            rotate)
+          </span>
+          <div class="fleet-draggable"></div>
+          <button class="start">Start</button>
+        </div>
+
+      </div>
+
+      <div class="info-container">
+        <h1 class="info-text"></h1>
+        <button class="play-again">Play Again?</button>
+      </div>
+
+
+    </main>
+
   </body>
 </html>
