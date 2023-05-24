@@ -104,7 +104,7 @@ const Game = (type) => {
     };
 
     const startGame = () => {
-        addGridEventListeners();
+        addGridEventListener();
         if (p2.getType() === 'computer') p2Board.autoPlaceFleet(p2.getFleet());
         gameboardView.startGame();
     };
