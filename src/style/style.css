@@ -4,4 +4,40 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to right, rgb(55, 65, 81), rgb(17, 24, 39), rgb(0, 0, 0));
+    color: #FAFAF9;
 }
+
+.grid {
+    grid-template-columns: repeat(auto-fit, minmax(2.5rem, 1fr));
+    border: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(-45deg, #00d9ff, #fff);
+    cursor: none;
+    width: 25rem;
+    height: 25rem;
+    grid-gap: 0;
+    box-sizing: content-box;
+}
+
+.p2-grid {
+    border-image-source: linear-gradient(-45deg, red, #fae900);;
+}
+
+.grid-cell {
+    border: 1px solid rgba(255,255,255,0.211765);
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.grid-cell:hover {
+    background-color: #00c1fc;
+    box-shadow: 0px 0px 5px 0px #00c1fc;
+}
+
+.p2-grid .grid-cell:hover {
+    background-color: #DC2626;
+    box-shadow: 0px 0px 5px 0px #DC2626;
+}
+
+
