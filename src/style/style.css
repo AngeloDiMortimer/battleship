@@ -9,25 +9,34 @@ body {
 }
 
 .grid {
-    grid-template-columns: repeat(auto-fit, minmax(2.5rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(1.7rem, 1fr));
     border: 2px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(-45deg, #00d9ff, #fff);
     cursor: none;
-    width: 25rem;
-    height: 25rem;
     grid-gap: 0;
     box-sizing: content-box;
+    width: 17rem;
+    height: 17rem;
 }
 
+
 .p2-grid {
-    border-image-source: linear-gradient(-45deg, red, #fae900);;
+    border-image-source: linear-gradient(-45deg, red, #fae900);
+    width: 18rem;
+    height: 18rem;
+    grid-template-columns: repeat(auto-fit, minmax(1.8rem, 1fr));
 }
 
 .grid-cell {
     border: 1px solid rgba(255,255,255,0.211765);
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.p2-grid .grid-cell {
+    width: 1.8rem;
+    height: 1.8rem;
 }
 
 .grid-cell:hover {
@@ -41,3 +50,27 @@ body {
 }
 
 
+@media (min-width: 976px) {
+    .grid {
+        width: 25rem;
+        height: 25rem;
+        grid-template-columns: repeat(auto-fit, minmax(2.5rem, 1fr));
+    }
+    .grid-cell {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .p2-grid {
+        border-image-source: linear-gradient(-45deg, red, #fae900);
+        width: 30rem;
+        height: 30rem;
+        grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+    }
+    
+    .p2-grid .grid-cell {
+        width: 3rem;
+        height: 3rem;
+    }
+
+}

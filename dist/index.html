@@ -11,22 +11,24 @@
     <title>Webpack App</title>
   </head>
   <body>
-    <header>
-      <h1 class="title">
-        Battleship
+    <header class="p-6">
+      <h1 class="title text-center text-4xl font-bold
+      bg-gradient-to-r from-slate-300 to-slate-500 bg-clip-text text-transparent
+      md:text-7xl">
+        BATTLESHIP
       </h1>
     </header>
     <main>
-      <div class="game-container">
+      <div class="game-container flex flex-col items-center justify-center p-3 md:flex-row">
         
-        <div class="gameboards-container">
-          <div class="p1-gameboard">
-            <h1 class="grid-title">My Fleet</h1>
+        <div class="gameboards-container flex flex-col md:flex-row">
+          <div class="p1-gameboard flex flex-col items-center">
+            <h1 class="grid-title text-center">My Fleet</h1>
             <div class="grid p1-grid"></div>
           </div>
           
           <div class="p2-gameboard">
-            <h1 class="grid-title">Enemy Fleet</h1>
+            <h1 class="grid-title text-center">Enemy Fleet</h1>
             <div class="grid p2-grid"></div>
           </div>
 
