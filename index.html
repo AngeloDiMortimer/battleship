@@ -19,29 +19,30 @@
       </h1>
     </header>
     <main>
-      <div class="game-container flex flex-col items-center justify-center p-3 md:flex-row">
+      <div class="game-container flex flex-col items-center justify-center mx-auto p-3 md:flex-row md:gap-14">
         
-        <div class="gameboards-container flex flex-col md:flex-row">
-          <div class="p1-gameboard flex flex-col items-center">
-            <h1 class="grid-title text-center">My Fleet</h1>
+        <div class="gameboards-container flex flex-col justify-between items-center gap-8 md:gap-14 md:flex-row">
+          <div class="p1-gameboard flex flex-col">
+            <h1 class="grid-title text-xl font-semibold mb-2">My Fleet</h1>
             <div class="grid p1-grid"></div>
           </div>
           
-          <div class="p2-gameboard">
-            <h1 class="grid-title text-center">Enemy Fleet</h1>
+          <div class="p2-gameboard hidden">
+            <h1 class="grid-title text-2xl font-semibold mb-2">Enemy Fleet</h1>
             <div class="grid p2-grid"></div>
           </div>
 
         </div>
 
-        <div class="fleet-container">
-          <h1>Place Fleet</h1>
-          <button class="fleet-autoplace">Auto-Place</button>
-          <span class="fleet-info">Drag n' Drop (Double click to 
+        <div class="fleet-container flex flex-col items-center justify-around mt-7 gap-6">
+          <h1 class="font-medium mb-2 md:text-3xl">Place Fleet</h1>
+          <button class="fleet-autoplace uppercase border-2 border-solid border-white
+          text-2xl px-5 py-2 font-semibold">Auto-Place</button>
+          <span class="fleet-info font-semibold">Drag n' Drop (Double click to 
             rotate)
           </span>
-          <div class="fleet-draggable"></div>
-          <button class="start">Start</button>
+          <div class="fleet-draggable flex flex-col flex-wrap items-center justify-evenly gap-6"></div>
+          <button class="start hidden">Start</button>
         </div>
 
       </div>
