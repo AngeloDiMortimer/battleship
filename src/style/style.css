@@ -20,12 +20,28 @@ body {
     height: 17rem;
 }
 
+.grid-disabled {
+    transform: scale(0.8);
+    transition: all 1s ease;
+    opacity: 0.7;
+}
+
+.p2-gameboard.hide {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.p2-gameboard.show {
+    visibility: visible;
+    opacity: 1;
+}
 
 .p2-grid {
     border-image-source: linear-gradient(-45deg, red, #fae900);
-    width: 18rem;
-    height: 18rem;
-    grid-template-columns: repeat(auto-fit, minmax(1.8rem, 1fr));
+    width: 17rem;
+    height: 17rem;
+    grid-template-columns: repeat(auto-fit, minmax(1.7rem, 1fr));
 }
 
 .grid-cell {
@@ -35,8 +51,8 @@ body {
 }
 
 .p2-grid .grid-cell {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 1.7rem;
+    height: 1.7rem;
 }
 
 .grid-cell:hover {
@@ -91,7 +107,6 @@ body {
     top: 0;
     left: 0;
     z-index: 1;
-    display: none;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
@@ -122,6 +137,21 @@ body {
     30%, 13% 1%, 41% 21%);
 }
 
+.miss {
+    background-color: #0f3366;
+}
+
+.fleet-container.slide-in {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 0;
+    transition: all 0.7s ease;
+}
+
+.fleet-container.slide-out {
+    display: none;
+}
+
 .fleet-info.show {
     visibility: hidden;
     opacity: 0;
@@ -140,13 +170,15 @@ body {
 .start {
     visibility: hidden;
     opacity: 0;
+    transition: opacity 1s ease;
 }
 
 .start.show {
-    transition: opacity 1s ease;
     visibility: visible;
     opacity: 1;
-    
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms
 }
 
 @media (min-width: 976px) {

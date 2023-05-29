@@ -27,18 +27,18 @@
             <div class="grid p1-grid"></div>
           </div>
           
-          <div class="p2-gameboard hidden">
+          <div class="p2-gameboard grid-disabled hide">
             <h1 class="grid-title text-2xl font-semibold mb-2">Enemy Fleet</h1>
             <div class="grid p2-grid"></div>
           </div>
 
         </div>
 
-        <div class="fleet-container flex flex-col items-center justify-around mt-7 gap-6">
+        <div class="fleet-container flex flex-col items-center justify-around mt-7 gap-6 slide-in">
           <h1 class="font-medium mb-2 md:text-3xl">Place Fleet</h1>
           <button class="fleet-autoplace uppercase border-2 border-solid border-white
           text-2xl px-5 py-2 font-semibold transition-all duration-300
-          hover:bg-white hover:text-black">Auto-Place</button>
+          hover:bg-white hover:text-black show">Auto-Place</button>
           <span class="fleet-info font-semibold show">Drag n' Drop (Double click to 
             rotate)
           </span>
@@ -51,7 +51,7 @@
       </div>
 
       <div class="info-container">
-        <h1 class="info-text text-5xl font-semibold">YOU WIN!</h1>
+        <h1 class="info-text text-5xl font-semibold"></h1>
         <button class="play-again mt-6 border-2 border-solid border-white
         text-2xl px-5 py-2 font-semibold transition-all duration-300
         hover:bg-white hover:text-black">Play Again?</button>

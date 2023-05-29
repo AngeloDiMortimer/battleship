@@ -9,6 +9,6 @@ export const elements = {
     fleetDraggable: document.querySelector('.fleet-draggable'),
     startBtn: document.querySelector('.start'),
     infoContainer: document.querySelector('.info-container'),
-    infoText: document.querySelector('.info.text'),
+    infoText: document.querySelector('.info-text'),
     playAgainBtn: document.querySelector('.play-again'),
 };
